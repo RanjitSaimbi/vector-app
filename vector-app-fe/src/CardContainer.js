@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Card } from './Card'
+import { Modal } from './Modal'
 import './App.css'
 
 export const CardContainer = () => {
@@ -14,6 +15,11 @@ export const CardContainer = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const [draggedItem, setDraggedItem] = useState(null)
+
+    const [show, setShow] = useState(false)
+
+    const openModal = () => setShow(true)
+    const closeModal = () => setShow(false)
 
     const onDragStart = (e, index) => {
         setDraggedItem(documents[index])
@@ -40,6 +46,7 @@ export const CardContainer = () => {
 
     return(
         <div>
+            <Modal closeModal={closeModal} show={show} />
             <h1 className='title'>Documents</h1>
             <div className='card-container'>
                 {documents.map(({type, title, position, image}) =>
@@ -48,6 +55,7 @@ export const CardContainer = () => {
                       onDragStart={event => onDragStart(event, position)}
                       onDragOver={() => onDragOver(position)}
                       onDragEnd={onDragEnd}
+                      onClick={openModal}
                     > 
                       <Card
                         isLoading={isLoading} 
