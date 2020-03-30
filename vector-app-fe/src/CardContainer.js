@@ -11,13 +11,16 @@ export const CardContainer = () => {
         {type: "bill-of-lading-2", title: "Bill of Lading 2", position: 4, image: "https://media1.giphy.com/media/C9x8gX02SnMIoAClXa/giphy.webp?cid=ecf05e47f18aea03357b5e437eab9726a2edb67fba4e5301&rid=giphy.webp"}
     ])
 
+    const [isLoading, setIsLoading] = useState(false)
+
     return(
         <div>
             <h1 className='title'>Documents</h1>
             <div className='card-container'>
                 {documents.map(({type, title, position, image}) => 
-                    <Card 
-                        type={type}
+                    <Card
+                        isLoading={isLoading} 
+                        key={type}
                         title={title}
                         position={position}
                         image={image}    

@@ -16,9 +16,16 @@
 
 .card {
   width: 200px;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   position: relative;
-  border: 15px solid rgb(255, 254, 254);
- 
+  border: 15px solid rgb(255, 254, 254); 
+}
+
+.loading {
+  text-align: center;
+  background-color: grey;
+  width: 200px;
+  height: 250px;
+  border: 15px solid rgb(255, 254, 254); 
 }
