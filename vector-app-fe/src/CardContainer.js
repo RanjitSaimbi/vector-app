@@ -18,7 +18,13 @@ export const CardContainer = () => {
 
     const [show, setShow] = useState(false)
 
-    const openModal = () => setShow(true)
+    const [selectedImage, setSelectedImage] = useState('')
+
+    const openModal = (imageUrl) => {
+        setSelectedImage(imageUrl)
+        setShow(true)
+    }
+
     const closeModal = () => setShow(false)
 
     const onDragStart = (e, index) => {
@@ -46,7 +52,7 @@ export const CardContainer = () => {
 
     return(
         <div>
-            <Modal closeModal={closeModal} show={show} />
+            <Modal closeModal={closeModal} show={show} selectedImage={selectedImage}/>
             <h1 className='title'>Documents</h1>
             <div className='card-container'>
                 {documents.map(({type, title, position, image}) =>
@@ -55,7 +61,7 @@ export const CardContainer = () => {
                       onDragStart={event => onDragStart(event, position)}
                       onDragOver={() => onDragOver(position)}
                       onDragEnd={onDragEnd}
-                      onClick={openModal}
+                      onClick={() => {openModal(image)}}
                     > 
                       <Card
                         isLoading={isLoading} 
