@@ -1,3 +1,4 @@
+from app.api import documents
 from fastapi import FastAPI
 from app.db import engine, metadata, database
 
@@ -17,3 +18,5 @@ async def shutdown():
 @app.get("/")
 def pong():
     return {"ping": "pong!"}
+
+app.include_router(documents.router, prefix="/documents", tags=["documents"])
