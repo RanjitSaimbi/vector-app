@@ -1,6 +1,7 @@
 from app.api import crud
 from app.api.models import DocumentDB, DocumentSchema
 from fastapi import APIRouter, HTTPException
+from typing import List
 
 router = APIRouter()
 
@@ -17,3 +18,7 @@ async def create_document(payload: DocumentSchema):
         "image": payload.image,
     }
     return response_object
+
+@router.get("/", response_model=List[DocumentDB])
+async def read_all_documents():
+    return await crud.get_all()
