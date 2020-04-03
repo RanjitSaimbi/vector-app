@@ -8,7 +8,6 @@ from databases import Database
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# SQLAlchemy
 engine = create_engine(DATABASE_URL)
 metadata = MetaData()
 documents = Table(
@@ -21,5 +20,4 @@ documents = Table(
     Column("image", String(100))
 )
 
-# databases query builder
 database = Database(DATABASE_URL)

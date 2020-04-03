@@ -30,6 +30,10 @@
   border: 15px solid rgb(255, 254, 254); 
 }
 
+.button {
+  
+}
+
 .show {
   display: block;
 }
@@ -55,3 +59,4 @@
   margin-top: -75px;
   margin-left: -75px;
 }
+
